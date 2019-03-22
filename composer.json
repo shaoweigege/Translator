@@ -2,6 +2,7 @@
 	"name": "benfiratkaya/translator",
 	"type": "library",
 	"description": "Translator class for based PHP systems.",
+	"license": "MIT",
 	"keywords": ["php", "translate", "translator"],
 	"homepage": "https://github.com/benfiratkaya/Translator",
 	"authors": [
@@ -18,5 +19,7 @@
          "require-dev": {
              "phpunit/phpunit": "~4.1"
          },
-	"license": "MIT"
+	"minimum-stability": "stable",
+        "prefer-stable": true
+	
 }
