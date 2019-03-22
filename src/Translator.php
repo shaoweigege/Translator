@@ -1,17 +1,19 @@
 <?php
 	 /*
-	 * @see 	     https://github.com/benfiratkaya/Translator
-	 * @author     Fırat Kaya
+	 * @see 	   https://github.com/benfiratkaya/Translator
+	 * @author 	Fırat Kaya
 	 * @version    1.0
 	 * @copyright  2019 Fırat Kaya
 	 */
- 	class Translator {
+	 namespace benfiratkaya\Translator;
+ 	class Translator extends Register {
  		private $exception;
  		private $type;
  		private $lang;
  		private $path;
  		private $file;
  		private $text;
+ 		
  		public function __construct($exception = null, $type=null, $lang=null, $path=null) {
  			$this->exception = (isset($exception)) ? $exception : false;
  			$this->type = (isset($type)) ? $type : 'json';
@@ -60,7 +62,7 @@
  			$this->exception = (isset($exception)) ? $exception : false;
  			$this->setFile();
  		}
- 		public function translate($text=null, $variable=null) {
+ 		public function translate($text = null, $variable = null) {
  			if (isset($variable)) {
  				return strtr(((isset($this->text[$text])) ? $this->text[$text] : $text), $variable);
  			}
@@ -68,6 +70,6 @@
  				return ((isset($this->text[$text])) ? $this->text[$text] : $text);
  			}
  		}
-		
  	}
-?>
+    
+    
