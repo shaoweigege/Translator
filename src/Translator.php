@@ -33,14 +33,14 @@
  				}
  				else {
 				 	if ($this->exception === true) {
- 						throw new Exception('File not found.');
+ 						throw new Exception('File not found!');
  					}
  					return false;
  				}
  			}
  			else {
  				if ($this->exception === true) {
- 					throw new Exception('File type not found.');
+ 					throw new Exception('This type is not supported!');
  				}
  				return false;
  			}
@@ -68,3 +68,4 @@
  			return ((isset($this->text[$text])) ? $this->text[$text] : $text);
   		}
  	}
+    
