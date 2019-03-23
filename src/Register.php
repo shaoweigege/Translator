@@ -9,7 +9,7 @@
 			return $previous;
 		}
 		private static function includeFunctions() {
-			include __DIR__.'/Functions.php';
+			include_once __DIR__.'/Functions.php';
 		}
 	}
     
