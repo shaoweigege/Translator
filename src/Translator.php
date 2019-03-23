@@ -23,22 +23,14 @@
  		}
  		private function setFile() {
  			$this->file = $this->path.'/'.$this->lang.'.'.$this->type;
- 			if (file_exists($this->file)) {
- 				$jsonFile = file_get_contents($this->file);
- 				if ($this->type === 'json') {
- 					$this->text = json_decode($jsonFile, true);
- 				}
- 				else {
- 					if ($this->exception === true) {
- 						throw new Exception('type not defined');
- 					}
- 				}
+ 			if (!is_file($this->file) && $this->exception === true) {
+ 				throw new Exception('file not defined');
  			}
- 			else {
- 				if ($this->exception === true) {
- 					throw new Exception('file not defined');
- 				}
+ 			if ($this->type !== 'json') {
+ 				throw new Exception('type not defined');
  			}
+ 			$jsonFile = file_get_contents($this->file);
+ 			$this->text = json_decode($jsonFile, true);
  		}
  		public function setType($type = null) {
  			$this->type = (isset($type)) ? $type : 'json';
@@ -63,5 +55,3 @@
  			return ((isset($this->text[$text])) ? $this->text[$text] : $text);
   		}
  	}
-    
-    
