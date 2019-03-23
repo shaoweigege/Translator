@@ -16,4 +16,3 @@
 	function e__($text = null, $variable = null) {
 		return translate($text, $variable);
 	}
-    
