@@ -12,4 +12,3 @@
 			include_once __DIR__.'/Functions.php';
 		}
 	}
-    
