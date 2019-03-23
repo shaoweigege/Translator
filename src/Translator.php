@@ -22,15 +22,28 @@
  			$this->setFile();
  		}
  		private function setFile() {
- 			$this->file = $this->path.'/'.$this->lang.'.'.$this->type;
- 			if (!is_file($this->file) && $this->exception === true) {
- 				throw new Exception('file not defined');
+ 			$supportedTypes = array('php', 'json', 'xml', 'ini', 'yaml');
+ 			if (in_array($this->type, $supportedTypes)) {
+ 				$this->file = $this->path.'/'.$this->lang.'.'.$this->type;
+ 				if (is_file($this->file)) {
+ 					$fileContent = file_get_contents($this->file);
+ 					if ($this->type === 'json') {
+ 						$this->text = json_decode($fileContent, true);
+ 					}
+ 				}
+ 				else {
+				 	if ($this->exception === true) {
+ 						throw new Exception('File not found.');
+ 					}
+ 					return false;
+ 				}
  			}
- 			if ($this->type !== 'json') {
- 				throw new Exception('type not defined');
+ 			else {
+ 				if ($this->exception === true) {
+ 					throw new Exception('File type not found.');
+ 				}
+ 				return false;
  			}
- 			$jsonFile = file_get_contents($this->file);
- 			$this->text = json_decode($jsonFile, true);
  		}
  		public function setType($type = null) {
  			$this->type = (isset($type)) ? $type : 'json';
