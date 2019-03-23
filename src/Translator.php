@@ -58,13 +58,9 @@
  		}
  		public function translate($text = null, $variable = null) {
  			if (isset($variable)) {
- 				$result = strtr(((isset($this->text[$text])) ? $this->text[$text] : $text), $variable);
+ 				return strtr(((isset($this->text[$text])) ? $this->text[$text] : $text), $variable);
  			}
- 			else {
- 				$result = ((isset($this->text[$text])) ? $this->text[$text] : $text);
- 			}
- 			
- 			return $result;
+ 			return ((isset($this->text[$text])) ? $this->text[$text] : $text);
   		}
  	}
     
