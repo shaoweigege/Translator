@@ -18,7 +18,7 @@
  			$this->exception = (isset($exception)) ? $exception : false;
  			$this->type = (isset($type)) ? $type : 'json';
  			$this->lang = (isset($lang)) ? $lang : 'en_US';
- 			$this->path = (isset($path)) ? rtrim($path, '/') : dirname(__FILE__).'/languages';
+ 			$this->path = (isset($path)) ? rtrim($path, '/') : __DIR__.'/languages';
  			$this->setFile();
  		}
  		private function setFile() {
@@ -32,17 +32,11 @@
  					if ($this->exception === true) {
  						throw new Exception('type not defined');
  					}
- 					else {
- 						echo 'type not found';
- 					}
  				}
  			}
  			else {
  				if ($this->exception === true) {
- 						throw new Exception('file not defined');
- 				}
- 				else {
- 					echo 'file not found';
+ 					throw new Exception('file not defined');
  				}
  			}
  		}
@@ -55,7 +49,7 @@
  			$this->setFile();
  		}
  		public function setPath($path = null) {
- 			$this->path = (isset($path)) ? rtrim($path, '/') : dirname(__FILE__).'/languages';
+ 			$this->path = (isset($path)) ? rtrim($path, '/') : __DIR__.'/languages';
  			$this->setFile();
  		}
  		public function setException($exception = null) {
@@ -64,12 +58,14 @@
  		}
  		public function translate($text = null, $variable = null) {
  			if (isset($variable)) {
- 				return strtr(((isset($this->text[$text])) ? $this->text[$text] : $text), $variable);
+ 				$result = strtr(((isset($this->text[$text])) ? $this->text[$text] : $text), $variable);
  			}
  			else {
- 				return ((isset($this->text[$text])) ? $this->text[$text] : $text);
+ 				$result = ((isset($this->text[$text])) ? $this->text[$text] : $text);
  			}
- 		}
+ 			
+ 			return $result;
+  		}
  	}
     
     
