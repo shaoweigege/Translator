@@ -9,10 +9,11 @@
 		return translate($text, $variable);
 	}
 	
-	function t_($text = null, $variable = null) {
+	function t__($text = null, $variable = null) {
 		return translate($text, $variable);
 	}
 
-	function e_($text = null, $variable = null) {
+	function e__($text = null, $variable = null) {
 		return translate($text, $variable);
 	}
+    
